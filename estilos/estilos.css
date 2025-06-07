@@ -1,0 +1,620 @@
+
+
+@font-face {
+  font-family: 'EternalBattleBold';
+  src: url('../fonts/EternalBattleBold-rgP3y.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --space-xxs: 6px;  
+  --space-xs: 10px;  
+  --space-sm: 20px;   
+  --space-md: 24px;   
+  --space-lg: 30px;   
+  --space-xl: 40px;   
+  --space-2xl: 90px;  
+
+  --PatronHexagonos: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='86.6' viewBox='0 0 100 86.6'><polygon points='25,0 75,0 100,43.3 75,86.6 25,86.6 0,43.3' fill='none' stroke='%23ffffff' stroke-width='1'/></svg>");
+
+}
+
+body {
+  font-family: 'EternalBattleBold', sans-serif;
+  background-image:
+    
+    url("../imagenes/Gif-para-main.gif");  /* Sacado de : https://www.youtube.com/watch?v=pyoKTeBroQM&list=LL&index=26 */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* TODO General CSS */
+.general {
+  width: 80%;
+  max-width: 1280px;
+  min-width: 320px;
+  margin-inline: auto;
+  margin-block: var(--space-2xl); 
+  
+}
+
+/* TODO header CSS */
+.main-header {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(90deg, transparent, rgba(251, 0, 0, 0.28), transparent), rgba(28, 28, 28, 0.54);
+  padding: 0 var(--space-xl);
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  border-bottom: 9px solid rgba(255, 103, 86, 0.6); 
+  box-shadow:
+    0 0 30px 2px rgb(255, 0, 60),
+    0 0 80px 40px rgb(0, 0, 0);
+}
+
+.navegacion-principal a {
+  margin: 0 var(--space-xs);
+  font-size: 0.9rem;
+  display: inline-block;
+  background: linear-gradient(to right, rgb(124, 37, 37), rgb(212, 136, 167));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 10px 7px 3px rgba(0, 0, 0, 0.4);
+  transition: all 0.10s ease;
+}
+
+.navegacion-principal a:hover {
+  background: linear-gradient(to right, rgb(255, 119, 0), rgb(255, 255, 255));
+  text-shadow: 0px 0px 10px rgb(255, 0, 0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: scale(1.3);
+}
+
+.contenedor-logo img {
+  height: 90px;
+  transition: all 0.10s ease;
+}
+
+.contenedor-logo img:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 10px rgba(255, 125, 3, 0.8)) brightness(1.2);
+  cursor: pointer;
+}
+
+.boton-carrito {
+  background-color: rgba(17, 17, 10, 0.51);
+  color: #a99a7d; 
+  border: 3px solid #a99a7d; 
+  padding: var(--space-sm) var(--space-2xl); 
+  gap: var(--space-xs);
+  border-radius: 2px;
+  margin: 20px auto;
+  font-size: 1rem;
+  font-family: 'EternalBattleBold', serif;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.boton-carrito:hover {
+  background-color: rgb(79, 17, 17);
+  
+  background-image: var(--PatronHexagonos);
+  background-size: 20px 17.3px;
+  background-repeat: repeat;
+  color: rgb(255, 108, 108);
+  border-color: rgb(209, 162, 162);
+  box-shadow: 0 0 10px rgba(255, 108, 108, 0.7), 0 0 20px rgba(255, 108, 108, 0.5);
+  transform: scale(1.02);
+}
+
+
+.icono-carrito {
+  font-size: 1.2rem;
+}
+
+
+
+/* TODO Inicio CSS */
+.Inicio-section {
+  background-image: 
+    linear-gradient(rgba(133, 20, 44, 0.44), rgba(37, 35, 35, 0.44)),
+    var(--PatronHexagonos); 
+  
+  background-size: cover, 20px 17.3px;  
+  background-repeat: no-repeat, repeat;
+  background-position: center, top left; 
+  padding: var(--space-xl) var(--space-xl);
+}
+
+.Inicio-container {
+  
+  display: flex;
+  flex-wrap: wrap;
+  gap: 200px;
+  height: 600px;
+  align-items: center;
+  
+  justify-content: space-between;
+}
+
+.Inicio-left {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+.Inicio-left h1 {
+  font-size: 1.9rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color:rgb(255, 207, 222);
+   text-shadow: 0 0 10px rgb(255, 0, 81);
+}
+
+.Inicio-left p {
+  margin-bottom: 30px;
+  color: #ffe1c1;
+   text-shadow: 0 0 10px rgb(255, 0, 81);
+    
+    
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: #ffe1c1;
+  
+   
+}
+
+form input[type="text"],
+form select {
+  padding: 10px;
+  border: 2.5px solid rgb(255, 176, 200);
+  border-radius: 0;
+  color: rgba(249, 249, 249, 0.7);
+  background: linear-gradient(90deg, transparent, rgba(255, 70, 141, 0.46), transparent), rgba(28, 28, 28, 0.54);
+  box-shadow:
+    0 0 10px 1px rgb(254, 35, 35),
+    0 0 15px 10px rgb(0, 0, 0);
+}
+
+form select option {
+  background-color:rgba(106, 17, 17, 0.61); 
+  color:rgb(224, 224, 224); 
+}
+
+form button {
+  background-color:rgb(36, 37, 42);
+  color: #a99a7d;
+  border: 5px solid #a99a7d;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-family: 'EternalBattleBold', serif;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+form button:hover {
+  background-color: rgb(79, 17, 17);
+  color: rgb(255, 185, 185);
+  border-color: rgb(209, 162, 162);
+  background-image: var(--PatronHexagonos);
+  background-size: 20px 17.3px;
+  background-repeat: repeat;
+  box-shadow: 0 0 10px rgba(255, 108, 108, 0.7), 0 0 20px rgba(255, 108, 108, 0.5);
+  transform: scale(1.02);
+}
+
+/* TODO legado CSS */
+.legado-section {
+  position: relative;
+  padding: var(--space-2xl) var(--space-xl);
+  background: linear-gradient(90deg, transparent, rgb(55, 36, 22), transparent), rgba(28, 28, 28, 0.96);
+  
+  border-top: 9px solid rgba(255, 103, 86, 0.6); 
+  
+  box-shadow:
+    0 0 30px 2px rgb(255, 0, 60),
+    0 0 80px 40px rgb(0, 0, 0);
+}
+
+
+.legado-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: rgba(255, 239, 92, 0.95); 
+  text-shadow: 0 0 24px rgb(255, 77, 53),
+               0 0 36px rgba(3, 3, 3, 0.6);
+  
+}
+
+.legado-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    "t1 i2"
+    "i1 t2"
+    "i1 i3";
+  gap: 0 var(--space-lg);
+  height: 600px;
+}
+
+.t1 { grid-area: t1; }
+.i1 { grid-area: i1; }
+.i2 { grid-area: i2; }
+.t2 { grid-area: t2; }
+.i3 { grid-area: i3; }
+
+.legado-text,
+.col-texto {
+  position: relative;
+  padding: var(--space-md);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(21, 21, 21, 0.2);
+  background-image: 
+    linear-gradient(rgba(255, 175, 118, 0.29), rgba(241, 0, 0, 0.26)),
+    var(--PatronHexagonos);
+  background-size: cover, 20px 17.3px;
+  background-repeat: no-repeat, repeat;
+  
+  box-shadow:
+    0 0 10px 1px rgb(255, 0, 0),
+    0 0 15px 10px rgb(0, 0, 0);
+}
+
+
+
+.legado-text h3,
+.col-texto h3,
+.col-visual h3 {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  align-self: center;
+  color:rgb(255, 208, 208); 
+  text-shadow:
+    0 0 6px rgba(255, 0, 0, 0.8),
+    0 0 12px rgba(0, 0, 0, 0.6);
+}
+
+
+.legado-text p,
+.col-texto p {
+  font-size: 0.85rem;
+  color: #ffe1c1;
+  text-align: center;
+  text-shadow: 0 0 5px rgba(255, 120, 70, 0.5);
+}
+
+
+
+.legado-image,
+.col-visual {
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.legado-image img,
+.col-visual img {
+  width: 100%;
+  height: 100%;
+  
+}
+
+
+.legadoCompleta-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0;
+  height: 400px;
+  margin-top: 40px;
+}
+
+
+
+/* TODO Arsenal CSS -------------------------------------------------------------------------------- */
+
+.arsenal-section {
+  background: url("../imagenes/Textura_fondo.png"); /* Sacado de chat gpt (prompt: fondo para landing page de doom con tematica futurista */
+  padding: var(--space-xl);
+}
+
+.arsenal-container {
+  display: flex;
+  gap: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.arsenal-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.arsenal-left h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: var(--space-xs);
+  color: rgba(232, 241, 255, 0.95); 
+  text-shadow: 0 0 24px rgba(53, 56, 255, 0.7),
+               0 0 36px rgba(0, 213, 255, 0.6);
+}
+
+.arsenal-left small {
+  display: block;
+  text-transform: uppercase;
+  color: rgba(194, 217, 255, 0.85); 
+  text-shadow: 0 0 10px rgba(53, 56, 255, 0.45),
+               0 0 24px rgba(0, 0, 0, 0.4);
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+  font-size: 0.8rem;
+}
+
+.arsenal-left p {
+  margin-bottom: var(--space-xs);
+  color: rgba(194, 217, 255, 0.9); 
+  text-shadow: 0 0 8px rgba(53, 56, 255, 0.4),
+               0 0 20px rgba(0, 0, 0, 0.3);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.arsenal-left a {
+  color: rgba(194, 217, 255, 0.88); 
+  text-shadow: 0 0 12px rgba(53, 56, 255, 0.55),
+               0 0 28px rgba(0, 0, 0, 0.5);
+  text-decoration: underline;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: var(--space-lg);
+}
+
+
+.image-placeholder {
+  background-color: rgb(36, 36, 42);
+  height: 450px;
+  border-radius: 4px;
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  box-shadow: 0 0 12px rgb(0, 174, 255), 0 0 24px rgb(62, 12, 148); 
+}
+
+.image-placeholder img {
+  width: 100%;
+  height: 100%;
+  
+}
+
+
+.arsenal-right ul li {
+  color: rgba(194, 217, 255, 0.88); 
+   text-shadow: 0 0 12px rgba(53, 56, 255, 0.55),
+               0 0 28px rgba(0, 0, 0, 0.5);
+  
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  background-image: 
+    linear-gradient(rgba(29, 52, 146, 0.29), rgba(0, 115, 181, 0.74)),
+    var(--PatronHexagonos);
+  background-size: cover, 20px 17.3px;
+  background-repeat: no-repeat, repeat;
+  box-shadow: 0 0 202px rgba(5, 131, 248, 0.6); 
+  
+}
+
+thead {
+  background-image: 
+    linear-gradient(rgba(53, 62, 96, 0), rgba(107, 99, 255, 0.74));
+     color: rgba(194, 217, 255, 0.91); 
+      text-shadow: 0 0 12px rgba(53, 56, 255, 0.5),
+               0 0 32px rgb(0, 0, 0);
+}
+
+tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.53); 
+}
+
+th,
+
+td {
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 3px solid rgb(78, 187, 255);
+    color: rgba(194, 217, 255, 0.9); 
+  text-shadow: 0 0 8px rgba(53, 56, 255, 0.4),
+}
+
+td img {
+  max-width: 50px;
+  max-height: 50px;
+  width: auto;
+  height: auto;
+
+  vertical-align: middle;
+  object-fit: contain;
+
+  filter: 
+    brightness(0) 
+    saturate(100%) 
+    invert(60%)     
+    sepia(80%) 
+    saturate(600%) 
+    hue-rotate(180deg) 
+    brightness(1.8)   
+    drop-shadow(0 0 10px rgb(119, 0, 255));
+    
+}
+
+
+
+.tag {
+  display: inline-block;
+  margin: var(--space-xxs) var(--space-xxs) 0 0;
+  padding: var(--space-xxs) var(--space-xs);
+  font-size: 0.65rem;
+  border-radius: 12px;
+  background-color: rgba(36, 36, 42, 0.58);;
+  color: #a0c4ff; 
+  border: 1px solid rgba(160, 196, 255, 0.8);
+  box-shadow: 0 0 6px rgb(0, 98, 255);
+}
+
+
+
+/* TODO Comentarios CSS -------------------------------------------------------------------------------- */
+.comentarios-section {
+  
+  padding: var(--space-xl) var(--space-xl);
+   background:
+    linear-gradient(rgba(25, 103, 8, 0.72), rgba(24, 24, 24, 0.98)), 
+    var(--PatronHexagonos); 
+    
+
+    border-top:9px solid rgb(0, 251, 79);
+   border-top-left-radius: 12px 4px;
+    border-top-right-radius: 12px 4px;
+  box-shadow:
+    0 0 20px rgba(0, 251, 13, 0.5);  
+    
+  border-radius: 12px; 
+}
+
+
+.comentarios-container h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  
+  color: rgb(203, 255, 107); 
+  text-shadow: 0 0 24px rgba(81, 247, 72, 0.8);
+}
+
+.comentarios-container p {
+  font-size: 1rem;
+  color: rgb(215, 236, 139); 
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+ 
+
+}
+
+.comentarios-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+ 
+}
+
+.comentarios-card {
+  background: linear-gradient(
+    to bottom,
+    rgba(92, 161, 96, 0.67),
+    rgba(5, 94, 11, 0.77),
+    rgba(0, 0, 0, 0.65)
+  );
+  box-shadow: 0 0 10px rgba(81, 247, 72, 0.8); 
+
+  padding: var(--space-2xl) var(--space-xl);
+  flex: 1;
+  min-width: 280px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border-top: 8px solid rgb(203, 255, 107);     
+  border-bottom: 8px solid  rgb(203, 255, 107); 
+
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+
+.user-icon img {
+  width: 100px;
+  height: 100px;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8); 
+ 
+}
+
+/* TODO FOOTER CSS -------------------------------------------------------------------------------- */
+.main-footer {
+  background: linear-gradient(90deg, transparent, rgba(180, 200, 0, 0.51), transparent), rgb(28, 28, 28);
+  padding: 20px 40px;
+  border-top: 9px solid rgba(211, 239, 119, 0.6); 
+  box-shadow:
+    0 0 30px 2px rgb(217, 255, 0),
+    0 0 80px 40px rgb(0, 0, 0);
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.main-footer p {
+  color: rgba(232, 241, 255, 0.95); 
+  text-shadow: 0 0 24px rgba(191, 255, 53, 0.7),
+               0 0 36px rgba(255, 255, 0, 0.6);
+  font-size: 0.95rem;
+}
+
+.social-iconos {
+  display: flex;
+  gap: 16px;
+}
+
+
+.social-iconos i {
+  font-size: 1.8rem;         
+  color: #d3ef77;             
+  transition: color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+
+.social-iconos i:hover {
+  color: #ffffff;             
+  transform: scale(1.2);     
+}

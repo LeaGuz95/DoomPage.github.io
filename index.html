@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Obligatorio LGuzman</title>
+  <link rel="stylesheet" href="estilos/estilos.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-yadaYadaHashAquí"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+</head>
+<body>
+
+  <!-- TODO header -->
+  <header class="main-header">
+    <nav class="navegacion-principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#legado">Legado</a>
+      <a href="#arsenal">Arsenal</a>
+      <a href="#comentarios">Comentarios</a>
+    </nav>
+
+    <div class="contenedor-logo">
+      <img src="imagenes/Logo.png" alt="Logo "> <!-- Editado del logo original  -->
+    </div>
+
+    <div class="zona-carrito">
+      <button class="boton-carrito">
+        <span class="icono-carrito">🛒</span>
+        Juega
+      </button>
+    </div>
+  </header>
+
+  
+  <main>
+
+   <!-- TODO Inicio -->
+    <section id="inicio" class="Inicio-section">
+      <div class="Inicio-container general">
+
+        <div class="Inicio-left">
+          <h1>¡Desata el Infierno<br>como el Slayer!!</h1>
+          <p>Entra en la batalla definitiva contra las hordas demoníacas.</p>
+
+          <form action="https://www.youtube.com/watch?v=hzPpWInAiOg" method="POST">
+            <label for="input">Nombre del Marines</label>
+            <input type="text" id="input" placeholder="Introduce tu nombre" required minlength="3">
+
+            <label for="select">Juego</label>
+            <select id="select" required>
+              <option value="" disabled selected>Selecciona tu Doom</option>
+              <option value="Doom1993">DOOM (1993)</option>
+              <option value="Doom3">DOOM 3 (2004)</option>
+              <option value="Doom2016">DOOM (2016)</option>
+              <option value="Eternal">DOOM Eternal</option>
+              <option value="DarkAges">DOOM: The Dark Ages</option>
+             
+            </select>
+
+            <label>
+              <input type="checkbox" required> Acepto las condiciones de combate
+            </label>
+
+            <button type="submit">¡Listo para la batalla!</button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TODO legado -->
+    <section id="legado" class="legado-section">
+      <div class="legado-container general">
+        <h2>Tres décadas de destrucción demoníaca</h2>  <!-- Imagenes de portadas editadas-->
+
+        <div class="legado-grid">
+          <div class="legado-text t1">
+            <h3>Orígenes del caos</h3>
+            <p>Los primeros DOOM (1993–1997) definieron el shooter en primera persona, combinando acción frenética, laberintos y hordas demoníacas.</p>
+          </div>
+          <div class="legado-image i1">
+            <img src="imagenes/Doom1264.png" alt="Dooms 90s">
+          </div>
+
+          <div class="legado-image i2">
+            <img src="imagenes/Doom3.png" alt="Doom 3">
+          </div>
+          <div class="legado-text t2">
+            <h3>Renacer violento</h3>
+            <p>En 2004, DOOM 3 ofreció un giro más oscuro y narrativo, con énfasis en el terror y una ambientación opresiva.</p>
+            <p>En 2016, DOOM volvió a sus raíces con acción veloz, ejecuciones brutales.</p>
+          </div>
+
+          <div class="legado-image i3">
+            <img src="imagenes/DoomEy2016.png" alt="Doom modernos">
+          </div>
+        </div>
+
+        <div class="legadoCompleta-grid">
+          <div class="col-texto">
+            <h3>DOOM: The Dark Ages</h3>
+            <p>Una nueva era comienza: DOOM viaja al pasado con una brutal precuela medieval que reinventa la acción demoníaca de la saga.</p>
+          </div>
+
+          <div class="col-visual">
+            <img src="imagenes/DarkAges.png" alt="Dark ages">
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- TODO arsenal -->
+<section id="arsenal" class="arsenal-section">
+  <div class="arsenal-container general">
+    <div class="arsenal-left">
+      <h2>El Arenal Infernal</h2>
+      <small>COMBATE ENTRE FUEGO Y CENIZAS</small>
+      <p>
+      Lava, oscuridad y demonios. En este campo ardiente, solo los fuertes sobreviven.
+      </p>
+    <a href="#">Entrar al Arenal</a>
+
+      <div class="image-placeholder"><img src="imagenes/casco.png" alt="Foto doom"></div>
+    </div>
+
+    <div class="arsenal-right">
+      <table>
+        <thead>
+          <tr>
+            <th>Arma</th>
+            <th>Tipo</th>
+            <th>Icono</th> <!-- Iconos Editados y pasados a SVG -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Escopeta</td>
+            <td><span class="tag">Cercano</span></td>
+            <td><img src="imagenes/Escopeta.svg" alt="Escopeta" width="50" height="50"></td>
+          </tr>
+          <tr>
+            <td>Minigun</td>
+            <td>
+              <span class="tag">Automatica</span>
+              <span class="tag">Largo alcance</span>
+            </td>
+            <td><img src="imagenes/Minigun.svg" alt="Minigun" width="50" height="50"></td>
+          </tr>
+          <tr>
+            <td>Rifle de plasma</td>
+            <td><span class="tag">Energía</span></td>
+            <td><img src="imagenes/R-Plasma.svg" alt="Plasma" width="50" height="50"></td>
+          </tr>
+          <tr>
+            <td>Motocierra</td>
+            <td>
+              <span class="tag">Melee</span>
+              <span class="tag">Letal</span>
+            </td>
+            <td><img src="imagenes/Motosierra.svg" alt="Motosierra" width="50" height="50"></td>
+          </tr>
+          <tr>
+            <td>BFG 10000</td>
+            <td><span class="tag">Argent</span></td>
+            <td><img src="imagenes/BFG.svg" alt="BFG" width="50" height="50"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <ul>
+        <li>Combate frenético</li>
+        <li>Demonios implacables</li>
+        <li>Arsenal icónico</li>
+        <li>Mapas infernales</li>
+        <li>Adrenalina pura<br>en cada nivel</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+   <!-- TODO Comentarios -->
+  <section  id="comentarios" class="comentarios-section">
+  <div class="comentarios-container general">
+    <h2>Lo que dice la comunidad</h2>
+    <p>
+      Guerreros del infierno y viciosos del teclado dejaron su opinión.<br>
+      Esto no es para cualquiera… y les encantó.
+    </p>
+
+    <div class="comentarios-grid">
+      <div class="comentarios-card">
+        <div class="user-icon">  <!-- Iconos de los personajes de juegos -->
+          <img src="imagenes/FotoUser1.png" alt="Usuario1" >
+        </div>
+        <p class="quote">
+          "Rápido, violento y sin vueltas. Como tiene que ser."
+        </p>
+        <p class="username">[DoomGuy23]</p>
+      </div>
+
+      <div class="comentarios-card">
+        <div class="user-icon">
+          <img src="imagenes/FotoUser2.png" alt="Usuario2" >
+        </div>
+        <p class="quote">
+          "Las ejecuciones son una locura."
+        </p>
+        <p class="username">[HellWalker]</p>
+      </div>
+
+      <div class="comentarios-card">
+        <div class="user-icon">
+          <img src="imagenes/FotoUser3.png" alt="Usuario3" >
+        </div>
+        <p class="quote">
+           "Esto no es un juego, es una terapia para descargar la semana. Mil veces mejor que meditar."
+        </p>
+        <p class="username">[CyberBaron]</p>
+      </div>
+
+   
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+   <!-- TODO Footer -->
+<footer class="main-footer">
+  <div class="footer-container">
+    <p>Sitio realizado por Leandro Guzmán</p>
+    <div class="social-iconos">
+      <a href="https://www.facebook.com/DOOM.Esp/?locale=es_LA" >
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+   
+      <a href="https://www.twitch.tv/directory/category/doom-the-dark-ages" >
+        <i class="fa-brands fa-twitch"></i>
+      </a>
+      <a href="https://www.linkedin.com/company/id-software/?originalSubdomain=es" >
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      <a href="https://store.steampowered.com/app/3017860/DOOM_The_Dark_Ages/">
+        <i class="fa-brands fa-steam"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
