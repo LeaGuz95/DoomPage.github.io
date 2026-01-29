@@ -1,5 +1,4 @@
 
-
 @font-face {
   font-family: 'EternalBattleBold';
   src: url('../fonts/EternalBattleBold-rgP3y.ttf') format('truetype');
@@ -17,14 +16,15 @@
   --space-2xl: 90px;  
 
   --PatronHexagonos: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='86.6' viewBox='0 0 100 86.6'><polygon points='25,0 75,0 100,43.3 75,86.6 25,86.6 0,43.3' fill='none' stroke='%23ffffff' stroke-width='1'/></svg>");
+}
 
+* {
+  box-sizing: border-box;
 }
 
 body {
   font-family: 'EternalBattleBold', sans-serif;
-  background-image:
-    
-    url("../imagenes/Gif-para-main.gif");  /* Sacado de : https://www.youtube.com/watch?v=pyoKTeBroQM&list=LL&index=26 */
+  background-image: url("../imagenes/Gif-para-main.gif");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -32,6 +32,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 /* TODO General CSS */
@@ -41,7 +42,6 @@ body {
   min-width: 320px;
   margin-inline: auto;
   margin-block: var(--space-2xl); 
-  
 }
 
 /* TODO header CSS */
@@ -49,18 +49,28 @@ body {
   position: relative;
   z-index: 1;
   background: linear-gradient(90deg, transparent, rgba(251, 0, 0, 0.28), transparent), rgba(28, 28, 28, 0.54);
-  padding: 0 var(--space-xl);
-  display: flex;
-  justify-content: space-between; 
-  align-items: center;
+  padding: var(--space-md) var(--space-xl);
   border-bottom: 9px solid rgba(255, 103, 86, 0.6); 
   box-shadow:
     0 0 30px 2px rgb(255, 0, 60),
     0 0 80px 40px rgb(0, 0, 0);
 }
 
+.header-wrapper {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.navegacion-principal {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
 .navegacion-principal a {
-  margin: 0 var(--space-xs);
   font-size: 0.9rem;
   display: inline-block;
   background: linear-gradient(to right, rgb(124, 37, 37), rgb(212, 136, 167));
@@ -68,6 +78,7 @@ body {
   -webkit-text-fill-color: transparent;
   text-shadow: 10px 7px 3px rgba(0, 0, 0, 0.4);
   transition: all 0.10s ease;
+  text-decoration: none;
 }
 
 .navegacion-principal a:hover {
@@ -81,6 +92,7 @@ body {
 .contenedor-logo img {
   height: 90px;
   transition: all 0.10s ease;
+  display: block;
 }
 
 .contenedor-logo img:hover {
@@ -93,21 +105,22 @@ body {
   background-color: rgba(17, 17, 10, 0.51);
   color: #a99a7d; 
   border: 3px solid #a99a7d; 
-  padding: var(--space-sm) var(--space-2xl); 
-  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-xl); 
   border-radius: 2px;
-  margin: 20px auto;
   font-size: 1rem;
   font-family: 'EternalBattleBold', serif;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   font-weight: 700;
   transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
 }
 
 .boton-carrito:hover {
   background-color: rgb(79, 17, 17);
-  
   background-image: var(--PatronHexagonos);
   background-size: 20px 17.3px;
   background-repeat: repeat;
@@ -117,56 +130,116 @@ body {
   transform: scale(1.02);
 }
 
-
 .icono-carrito {
   font-size: 1.2rem;
 }
 
+/* Botón Hamburguesa (oculto por defecto en desktop) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 35px;
+  height: 35px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1001;
+  position: relative;
+  transition: all 0.3s ease;
+}
 
+.hamburger-line {
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, rgb(255, 119, 0), rgb(255, 255, 255));
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 80, 0, 0.8), 
+              0 0 20px rgba(255, 0, 0, 0.4);
+}
+
+/* Animación del botón hamburguesa cuando está activo */
+.menu-toggle.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+  background: linear-gradient(to right, rgb(255, 50, 50), rgb(255, 255, 255));
+  box-shadow: 0 0 15px rgba(255, 50, 50, 1);
+}
+
+.menu-toggle.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.menu-toggle.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(8px, -8px);
+  background: linear-gradient(to right, rgb(255, 50, 50), rgb(255, 255, 255));
+  box-shadow: 0 0 15px rgba(255, 50, 50, 1);
+}
+
+.menu-toggle:hover .hamburger-line {
+  box-shadow: 0 0 20px rgba(255, 100, 0, 1),
+              0 0 30px rgba(255, 0, 0, 0.6);
+}
+
+/* Overlay del menú móvil */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 999;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
 
 /* TODO Inicio CSS */
 .Inicio-section {
   background-image: 
     linear-gradient(rgba(133, 20, 44, 0.44), rgba(37, 35, 35, 0.44)),
     var(--PatronHexagonos); 
-  
   background-size: cover, 20px 17.3px;  
   background-repeat: no-repeat, repeat;
   background-position: center, top left; 
-  padding: var(--space-xl) var(--space-xl);
+  padding: var(--space-xl);
 }
 
 .Inicio-container {
-  
   display: flex;
   flex-wrap: wrap;
-  gap: 200px;
-  height: 600px;
+  gap: 100px;
+  min-height: 600px;
   align-items: center;
-  
   justify-content: space-between;
 }
 
 .Inicio-left {
   flex: 1;
   min-width: 300px;
-  max-width: 500px;
+  max-width: 600px;
 }
 
 .Inicio-left h1 {
   font-size: 1.9rem;
   font-weight: bold;
   margin-bottom: 10px;
-  color:rgb(255, 207, 222);
-   text-shadow: 0 0 10px rgb(255, 0, 81);
+  color: rgb(255, 207, 222);
+  text-shadow: 0 0 10px rgb(255, 0, 81);
 }
 
 .Inicio-left p {
   margin-bottom: 30px;
   color: #ffe1c1;
-   text-shadow: 0 0 10px rgb(255, 0, 81);
-    
-    
+  text-shadow: 0 0 10px rgb(255, 0, 81);
 }
 
 form {
@@ -174,13 +247,15 @@ form {
   flex-direction: column;
   gap: 15px;
   color: #ffe1c1;
-  
-   
+}
+
+form label {
+  font-size: 0.9rem;
 }
 
 form input[type="text"],
 form select {
-  padding: 10px;
+  padding: 12px;
   border: 2.5px solid rgb(255, 176, 200);
   border-radius: 0;
   color: rgba(249, 249, 249, 0.7);
@@ -188,15 +263,28 @@ form select {
   box-shadow:
     0 0 10px 1px rgb(254, 35, 35),
     0 0 15px 10px rgb(0, 0, 0);
+  font-family: 'EternalBattleBold', sans-serif;
+  font-size: 0.9rem;
 }
 
 form select option {
-  background-color:rgba(106, 17, 17, 0.61); 
-  color:rgb(224, 224, 224); 
+  background-color: rgba(106, 17, 17, 0.61); 
+  color: rgb(224, 224, 224); 
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+  cursor: pointer;
 }
 
 form button {
-  background-color:rgb(36, 37, 42);
+  background-color: rgb(36, 37, 42);
   color: #a99a7d;
   border: 5px solid #a99a7d;
   padding: 12px 24px;
@@ -227,14 +315,11 @@ form button:hover {
   position: relative;
   padding: var(--space-2xl) var(--space-xl);
   background: linear-gradient(90deg, transparent, rgb(55, 36, 22), transparent), rgba(28, 28, 28, 0.96);
-  
   border-top: 9px solid rgba(255, 103, 86, 0.6); 
-  
   box-shadow:
     0 0 30px 2px rgb(255, 0, 60),
     0 0 80px 40px rgb(0, 0, 0);
 }
-
 
 .legado-section h2 {
   font-size: 2rem;
@@ -243,7 +328,6 @@ form button:hover {
   color: rgba(255, 239, 92, 0.95); 
   text-shadow: 0 0 24px rgb(255, 77, 53),
                0 0 36px rgba(3, 3, 3, 0.6);
-  
 }
 
 .legado-grid {
@@ -255,7 +339,7 @@ form button:hover {
     "i1 t2"
     "i1 i3";
   gap: 0 var(--space-lg);
-  height: 600px;
+  min-height: 600px;
 }
 
 .t1 { grid-area: t1; }
@@ -279,28 +363,22 @@ form button:hover {
     var(--PatronHexagonos);
   background-size: cover, 20px 17.3px;
   background-repeat: no-repeat, repeat;
-  
   box-shadow:
     0 0 10px 1px rgb(255, 0, 0),
     0 0 15px 10px rgb(0, 0, 0);
 }
 
-
-
 .legado-text h3,
-.col-texto h3,
-.col-visual h3 {
+.col-texto h3 {
   font-weight: bold;
   font-size: 1.2rem;
   margin-bottom: 20px;
   text-align: center;
-  align-self: center;
-  color:rgb(255, 208, 208); 
+  color: rgb(255, 208, 208); 
   text-shadow:
     0 0 6px rgba(255, 0, 0, 0.8),
     0 0 12px rgba(0, 0, 0, 0.6);
 }
-
 
 .legado-text p,
 .col-texto p {
@@ -309,8 +387,6 @@ form button:hover {
   text-align: center;
   text-shadow: 0 0 5px rgba(255, 120, 70, 0.5);
 }
-
-
 
 .legado-image,
 .col-visual {
@@ -326,24 +402,22 @@ form button:hover {
 .col-visual img {
   width: 100%;
   height: 100%;
-  
+  object-fit: cover;
 }
-
 
 .legadoCompleta-grid {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 0;
-  height: 400px;
+  min-height: 400px;
   margin-top: 40px;
 }
 
-
-
-/* TODO Arsenal CSS -------------------------------------------------------------------------------- */
-
+/* TODO Arsenal CSS */
 .arsenal-section {
-  background: url("../imagenes/Textura_fondo.png"); /* Sacado de chat gpt (prompt: fondo para landing page de doom con tematica futurista */
+  background: url("../imagenes/Textura_fondo.png");
+  background-size: cover;
+  background-position: center;
   padding: var(--space-xl);
 }
 
@@ -398,7 +472,6 @@ form button:hover {
   margin-bottom: var(--space-lg);
 }
 
-
 .image-placeholder {
   background-color: rgb(36, 36, 42);
   height: 450px;
@@ -408,22 +481,23 @@ form button:hover {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-
   box-shadow: 0 0 12px rgb(0, 174, 255), 0 0 24px rgb(62, 12, 148); 
 }
 
 .image-placeholder img {
   width: 100%;
   height: 100%;
-  
+  object-fit: cover;
 }
 
+.arsenal-right {
+  flex: 1;
+  min-width: 300px;
+}
 
-.arsenal-right ul li {
-  color: rgba(194, 217, 255, 0.88); 
-   text-shadow: 0 0 12px rgba(53, 56, 255, 0.55),
-               0 0 28px rgba(0, 0, 0, 0.5);
-  
+.tabla-wrapper {
+  overflow-x: auto;
+  margin-bottom: var(--space-lg);
 }
 
 table {
@@ -436,14 +510,12 @@ table {
   background-size: cover, 20px 17.3px;
   background-repeat: no-repeat, repeat;
   box-shadow: 0 0 202px rgba(5, 131, 248, 0.6); 
-  
 }
 
 thead {
-  background-image: 
-    linear-gradient(rgba(53, 62, 96, 0), rgba(107, 99, 255, 0.74));
-     color: rgba(194, 217, 255, 0.91); 
-      text-shadow: 0 0 12px rgba(53, 56, 255, 0.5),
+  background-image: linear-gradient(rgba(53, 62, 96, 0), rgba(107, 99, 255, 0.74));
+  color: rgba(194, 217, 255, 0.91); 
+  text-shadow: 0 0 12px rgba(53, 56, 255, 0.5),
                0 0 32px rgb(0, 0, 0);
 }
 
@@ -452,14 +524,13 @@ tr:nth-child(even) {
 }
 
 th,
-
 td {
   padding: var(--space-sm) var(--space-md);
   text-align: left;
-  vertical-align: top;
+  vertical-align: middle;
   border-bottom: 3px solid rgb(78, 187, 255);
-    color: rgba(194, 217, 255, 0.9); 
-  text-shadow: 0 0 8px rgba(53, 56, 255, 0.4),
+  color: rgba(194, 217, 255, 0.9); 
+  text-shadow: 0 0 8px rgba(53, 56, 255, 0.4);
 }
 
 td img {
@@ -467,10 +538,8 @@ td img {
   max-height: 50px;
   width: auto;
   height: auto;
-
   vertical-align: middle;
   object-fit: contain;
-
   filter: 
     brightness(0) 
     saturate(100%) 
@@ -480,10 +549,7 @@ td img {
     hue-rotate(180deg) 
     brightness(1.8)   
     drop-shadow(0 0 10px rgb(119, 0, 255));
-    
 }
-
-
 
 .tag {
   display: inline-block;
@@ -491,54 +557,56 @@ td img {
   padding: var(--space-xxs) var(--space-xs);
   font-size: 0.65rem;
   border-radius: 12px;
-  background-color: rgba(36, 36, 42, 0.58);;
+  background-color: rgba(36, 36, 42, 0.58);
   color: #a0c4ff; 
   border: 1px solid rgba(160, 196, 255, 0.8);
   box-shadow: 0 0 6px rgb(0, 98, 255);
 }
 
-
-
-/* TODO Comentarios CSS -------------------------------------------------------------------------------- */
-.comentarios-section {
-  
-  padding: var(--space-xl) var(--space-xl);
-   background:
-    linear-gradient(rgba(25, 103, 8, 0.72), rgba(24, 24, 24, 0.98)), 
-    var(--PatronHexagonos); 
-    
-
-    border-top:9px solid rgb(0, 251, 79);
-   border-top-left-radius: 12px 4px;
-    border-top-right-radius: 12px 4px;
-  box-shadow:
-    0 0 20px rgba(0, 251, 13, 0.5);  
-    
-  border-radius: 12px; 
+.caracteristicas-lista {
+  list-style-position: inside;
+  padding-left: 0;
 }
 
+.caracteristicas-lista li {
+  color: rgba(194, 217, 255, 0.88); 
+  text-shadow: 0 0 12px rgba(53, 56, 255, 0.55),
+               0 0 28px rgba(0, 0, 0, 0.5);
+  margin-bottom: var(--space-xs);
+}
+
+/* TODO Comentarios CSS */
+.comentarios-section {
+  padding: var(--space-xl);
+  background:
+    linear-gradient(rgba(25, 103, 8, 0.72), rgba(24, 24, 24, 0.98)), 
+    var(--PatronHexagonos); 
+  border-top: 9px solid rgb(0, 251, 79);
+  border-top-left-radius: 12px 4px;
+  border-top-right-radius: 12px 4px;
+  box-shadow: 0 0 20px rgba(0, 251, 13, 0.5);  
+  border-radius: 12px; 
+}
 
 .comentarios-container h2 {
   font-size: 2rem;
   font-weight: bold;
-  
   color: rgb(203, 255, 107); 
   text-shadow: 0 0 24px rgba(81, 247, 72, 0.8);
+  margin-bottom: var(--space-md);
 }
 
-.comentarios-container p {
+.comentarios-intro {
   font-size: 1rem;
   color: rgb(215, 236, 139); 
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
- 
-
+  margin-bottom: var(--space-lg);
 }
 
 .comentarios-grid {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
- 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
 }
 
 .comentarios-card {
@@ -549,37 +617,40 @@ td img {
     rgba(0, 0, 0, 0.65)
   );
   box-shadow: 0 0 10px rgba(81, 247, 72, 0.8); 
-
-  padding: var(--space-2xl) var(--space-xl);
-  flex: 1;
-  min-width: 280px;
-  max-width: 100%;
+  padding: var(--space-xl);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-
+  align-items: center;
+  gap: var(--space-md);
   border-top: 8px solid rgb(203, 255, 107);     
-  border-bottom: 8px solid  rgb(203, 255, 107); 
-
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
+  border-bottom: 8px solid rgb(203, 255, 107); 
+  border-radius: 12px;
 }
-
 
 .user-icon img {
   width: 100px;
   height: 100px;
-
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8); 
- 
+  border-radius: 50%;
 }
 
-/* TODO FOOTER CSS -------------------------------------------------------------------------------- */
+.quote {
+  color: rgb(215, 236, 139);
+  text-align: center;
+  font-size: 0.95rem;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+.username {
+  color: rgb(203, 255, 107);
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(81, 247, 72, 0.8);
+}
+
+/* TODO FOOTER CSS */
 .main-footer {
   background: linear-gradient(90deg, transparent, rgba(180, 200, 0, 0.51), transparent), rgb(28, 28, 28);
-  padding: 20px 40px;
+  padding: var(--space-lg) var(--space-xl);
   border-top: 9px solid rgba(211, 239, 119, 0.6); 
   box-shadow:
     0 0 30px 2px rgb(217, 255, 0),
@@ -591,6 +662,7 @@ td img {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  gap: var(--space-md);
 }
 
 .main-footer p {
@@ -602,19 +674,412 @@ td img {
 
 .social-iconos {
   display: flex;
-  gap: 16px;
+  gap: var(--space-md);
 }
 
+.social-iconos a {
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
 
 .social-iconos i {
   font-size: 1.8rem;         
   color: #d3ef77;             
-  transition: color 0.3s ease, transform 0.2s ease;
-  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
+.social-iconos a:hover {
+  transform: scale(1.2);
+}
 
-.social-iconos i:hover {
-  color: #ffffff;             
-  transform: scale(1.2);     
+.social-iconos a:hover i {
+  color: #ffffff;
+}
+
+/* ========================================
+   MEDIA QUERIES - RESPONSIVE DESIGN
+   ======================================== */
+
+/* Pantallas grandes (hasta 1200px) */
+@media (max-width: 1200px) {
+  .Inicio-container {
+    gap: 60px;
+  }
+}
+
+/* Tablets horizontales (hasta 992px) */
+@media (max-width: 992px) {
+  .general {
+    width: 90%;
+  }
+  
+  .legado-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "t1"
+      "i1"
+      "t2"
+      "i2"
+      "i3";
+    min-height: auto;
+    gap: var(--space-lg);
+  }
+  
+  .legado-image,
+  .col-visual {
+    min-height: 300px;
+  }
+  
+  .legadoCompleta-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+}
+
+/* Tablets verticales (hasta 768px) */
+@media (max-width: 768px) {
+  :root {
+    --space-2xl: 60px;
+  }
+  
+  /* Header */
+  .main-header {
+    padding: var(--space-md);
+  }
+  
+  .header-wrapper {
+    justify-content: center;
+    position: relative;
+  }
+  
+  /* Mostrar botón hamburguesa */
+  .menu-toggle {
+    display: flex;
+    order: 1;
+    position: absolute;
+    left: 0;
+  }
+  
+  /* Navegación móvil */
+  .navegacion-principal {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 280px;
+    height: 100vh;
+    background: linear-gradient(
+      135deg,
+      rgba(180, 30, 30, 0.98) 0%,
+      rgba(90, 15, 15, 0.98) 50%,
+      rgba(20, 5, 5, 0.98) 100%
+    );
+    background-image: 
+      linear-gradient(
+        135deg,
+        rgba(255, 50, 50, 0.15),
+        rgba(100, 0, 0, 0.4)
+      ),
+      var(--PatronHexagonos);
+    background-size: cover, 25px 21.65px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-lg);
+    padding: var(--space-2xl) var(--space-lg);
+    transition: left 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 1001;
+    box-shadow: 5px 0 40px rgba(255, 30, 30, 0.8), 
+                inset -2px 0 20px rgba(255, 100, 100, 0.3);
+    border-right: 6px solid rgba(255, 80, 80, 0.95);
+  }
+  
+  .navegacion-principal.active {
+    left: 0;
+  }
+  
+  .navegacion-principal a {
+    font-size: 1.4rem;
+    margin: 0;
+    padding: var(--space-md) var(--space-lg);
+    width: 100%;
+    text-align: center;
+    background: linear-gradient(
+      to right, 
+      rgb(255, 150, 150), 
+      rgb(255, 255, 255)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-bottom: 2px solid rgba(255, 150, 150, 0.4);
+    transition: all 0.3s ease;
+    text-shadow: 0 0 20px rgba(255, 100, 100, 0.8);
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  
+  .navegacion-principal a:hover {
+    background: linear-gradient(
+      to right, 
+      rgb(255, 255, 255), 
+      rgb(255, 200, 100)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-color: rgba(255, 50, 50, 0.3);
+    border-bottom-color: rgba(255, 200, 100, 0.9);
+    transform: scale(1.1);
+    text-shadow: 0 0 30px rgba(255, 150, 50, 1);
+  }
+  
+  /* Logo centrado */
+  .contenedor-logo {
+    order: 2;
+  }
+  
+  .contenedor-logo img {
+    height: 70px;
+  }
+  
+  /* Ocultar botón carrito en móvil */
+  .zona-carrito {
+    display: none;
+  }
+  
+  /* Inicio */
+  .Inicio-section {
+    padding: var(--space-lg) var(--space-md);
+  }
+  
+  .Inicio-container {
+    gap: var(--space-xl);
+    min-height: auto;
+  }
+  
+  .Inicio-left {
+    max-width: 100%;
+  }
+  
+  .Inicio-left h1 {
+    font-size: 1.6rem;
+  }
+  
+  /* Legado */
+  .legado-section {
+    padding: var(--space-xl) var(--space-md);
+  }
+  
+  .legado-section h2 {
+    font-size: 1.6rem;
+  }
+  
+  .legado-image,
+  .col-visual {
+    min-height: 250px;
+  }
+  
+  /* Arsenal */
+  .arsenal-section {
+    padding: var(--space-lg) var(--space-md);
+  }
+  
+  .arsenal-left h2 {
+    font-size: 1.6rem;
+  }
+  
+  .image-placeholder {
+    height: 350px;
+  }
+  
+  /* Tabla responsive tipo cards */
+  table {
+    font-size: 0.85rem;
+  }
+  
+  /* Comentarios */
+  .comentarios-section {
+    padding: var(--space-lg) var(--space-md);
+  }
+  
+  .comentarios-container h2 {
+    font-size: 1.6rem;
+  }
+  
+  .comentarios-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Footer */
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Móviles (hasta 576px) */
+@media (max-width: 576px) {
+  :root {
+    --space-2xl: 40px;
+  }
+  
+  .general {
+    width: 95%;
+    margin-block: var(--space-lg);
+  }
+  
+  /* Header */
+  .main-header {
+    padding: var(--space-sm);
+  }
+  
+  .navegacion-principal a {
+    font-size: 0.8rem;
+  }
+  
+  .contenedor-logo img {
+    height: 60px;
+  }
+  
+  .boton-carrito {
+    font-size: 0.85rem;
+    padding: var(--space-sm) var(--space-md);
+  }
+  
+  .texto-boton {
+    display: inline;
+  }
+  
+  /* Inicio */
+  .Inicio-section {
+    padding: var(--space-md);
+  }
+  
+  .Inicio-left h1 {
+    font-size: 1.4rem;
+  }
+  
+  .Inicio-left p {
+    font-size: 0.9rem;
+  }
+  
+  /* Legado */
+  .legado-section {
+    padding: var(--space-lg) var(--space-sm);
+  }
+  
+  .legado-section h2 {
+    font-size: 1.4rem;
+  }
+  
+  .legado-text,
+  .col-texto {
+    padding: var(--space-sm);
+  }
+  
+  .legado-text h3,
+  .col-texto h3 {
+    font-size: 1.1rem;
+  }
+  
+  .legado-text p,
+  .col-texto p {
+    font-size: 0.8rem;
+  }
+  
+  .legado-image,
+  .col-visual {
+    min-height: 200px;
+  }
+  
+  /* Arsenal */
+  .arsenal-section {
+    padding: var(--space-md);
+  }
+  
+  .arsenal-left h2 {
+    font-size: 1.4rem;
+  }
+  
+  .image-placeholder {
+    height: 280px;
+  }
+  
+  table {
+    font-size: 0.75rem;
+  }
+  
+  th, td {
+    padding: var(--space-xs);
+  }
+  
+  td img {
+    max-width: 40px;
+    max-height: 40px;
+  }
+  
+  /* Comentarios */
+  .comentarios-section {
+    padding: var(--space-md);
+  }
+  
+  .comentarios-container h2 {
+    font-size: 1.4rem;
+  }
+  
+  .comentarios-intro {
+    font-size: 0.9rem;
+  }
+  
+  .user-icon img {
+    width: 80px;
+    height: 80px;
+  }
+  
+  /* Footer */
+  .main-footer {
+    padding: var(--space-md);
+  }
+  
+  .main-footer p {
+    font-size: 0.85rem;
+  }
+  
+  .social-iconos i {
+    font-size: 1.5rem;
+  }
+}
+
+/* Móviles pequeños (hasta 400px) */
+@media (max-width: 400px) {
+  .navegacion-principal a {
+    font-size: 0.75rem;
+  }
+  
+  .contenedor-logo img {
+    height: 50px;
+  }
+  
+  .boton-carrito {
+    font-size: 0.75rem;
+    padding: var(--space-xs) var(--space-sm);
+  }
+  
+  .Inicio-left h1 {
+    font-size: 1.2rem;
+  }
+  
+  .legado-section h2,
+  .arsenal-left h2,
+  .comentarios-container h2 {
+    font-size: 1.2rem;
+  }
+  
+  .image-placeholder {
+    height: 220px;
+  }
+  
+  .user-icon img {
+    width: 70px;
+    height: 70px;
+  }
 }
